@@ -56,3 +56,12 @@ def evaluate_models(X_train, X_test, Y_train, Y_test, models, params):
 
     except Exception as e:
         raise CustomException(e, sys)
+
+
+def load_object(file_path):
+    try:
+        with open(file_path, "rb") as f_obj:
+            return pickle.load(f_obj)
+        
+    except Exception as e:
+        raise CustomException(e, sys)
