@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://testmlproject.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_060a7727c5c845078dbc565879a92946 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_973cde703e20409e8ddad1d4de00feca }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_02f6646d27824259be7ac6a74a2378cf }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_aae0e9e358a44658abb8fa0dd6531d2c }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: testmlproject.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_060a7727c5c845078dbc565879a92946 }}/mltest:${{ github.sha }}
+        tags: testmlproject.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_02f6646d27824259be7ac6a74a2378cf }}/mltest:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'mltestproject'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_564bc1869661417bb04f9eabb5e17cc7 }}
-        images: 'testmlproject.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_060a7727c5c845078dbc565879a92946 }}/mltest:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_b8240028e5f1498eacf335ad3c75502f }}
+        images: 'testmlproject.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_02f6646d27824259be7ac6a74a2378cf }}/mltest:${{ github.sha }}'
